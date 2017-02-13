@@ -10,7 +10,8 @@ ENV FLYWAY_VERSION=4.0.3 DOCKERIZE_VERSION=v0.2.0
 
 # The MS link is obtained from the following page:
 # https://msdn.microsoft.com/en-us/library/mt484311(v=sql.110).aspx
-RUN apk-install openjdk8-jre \
+RUN apk-install openjdk8-jre nodejs \
+  && npm install -g sql-cli \
   && wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.tar.gz \
   && tar -xzf flyway-commandline-${FLYWAY_VERSION}.tar.gz \
   && mv flyway-${FLYWAY_VERSION}/* . \
